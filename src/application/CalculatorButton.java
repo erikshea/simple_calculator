@@ -6,15 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-public class CalculatorButton extends JButton implements ActionListener {
-	public CalculatorButton(String text) {
+public abstract class CalculatorButton extends JButton{
+	protected Calculator calculator;
+	
+	public CalculatorButton(String text, Calculator c) {
+		this.calculator = c;
+		
 		this.setText(text);
 		this.setFont( new Font("Times", Font.PLAIN, 14) );
-		this.setPreferredSize(new Dimension(60, 40));
+		this.setPreferredSize(new Dimension(70, 40));
+		this.addActionListener( e->{
+			this.onClick(e);
+			this.calculator.setPreviousButtonClicked(this);
+		} );
 	}
 	
-	
-	public void actionPerformed(ActionEvent e){
-		
-	}
+	protected abstract void onClick(ActionEvent e);
 }
