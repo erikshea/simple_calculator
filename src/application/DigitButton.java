@@ -1,8 +1,10 @@
 package application;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 public class DigitButton extends CalculatorButton {
+	private static final long serialVersionUID = 1L;
 
 	public DigitButton(String s, Calculator c) {
 		super(s, c);
@@ -11,7 +13,7 @@ public class DigitButton extends CalculatorButton {
 	public void onClick(ActionEvent e) {
 		String displayString ="0";
 		
-		if ( this.getClass().isInstance(this.calculator.getPreviousButtonClicked()) ) { 
+		if ( this.getClass().isInstance(DigitButton.getLastButtonClicked()) ) { 
 			// if previous button clicked was digit, keep entering
 			displayString = calculator.getDisplayText();
 		}

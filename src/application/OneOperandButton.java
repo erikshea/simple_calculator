@@ -3,6 +3,7 @@ package application;
 import java.awt.event.ActionEvent;
 
 public class OneOperandButton extends CalculatorButton {
+	private static final long serialVersionUID = 1L;
 
 	public OneOperandButton(String text, Calculator c) {
 		super(text, c);
@@ -34,26 +35,6 @@ public class OneOperandButton extends CalculatorButton {
 				break;
 			case "±":
 					displayedNumber =  - displayedNumber;
-				break;
-				
-			case "M+":
-				if (this.calculator.getMemorizedNumber() == null) {
-					this.calculator.setMemorizedNumber(displayedNumber);
-				} else {
-					displayedNumber += this.calculator.getMemorizedNumber();
-				}
-				break;
-				
-			case "M-":
-				if (this.calculator.getMemorizedNumber() != null) {
-					displayedNumber -= this.calculator.getMemorizedNumber();
-				}
-				break;
-			
-			case "MRC":
-				if (this.calculator.getMemorizedNumber() != null) {
-					displayedNumber = this.calculator.getMemorizedNumber();
-				}
 				break;
 			}
 			
