@@ -1,6 +1,5 @@
 package application;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -9,29 +8,27 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import buttons.ButtonFactory;
+import buttons.CalculatorButton;
 import buttons.ImageButton;
+import buttons.TwoOperandButton;
 import util.FileUtils;
 
 public class Calculator extends JFrame{
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4380693977371341395L;
 	private final int maxDisplaySize = 20;
 	private final Font baseFont = new Font("Yu Gothic UI", Font.PLAIN, 0 );
 	private JLabel screen;
@@ -39,14 +36,23 @@ public class Calculator extends JFrame{
 	ImageButton closeButton, resizeButton;
 	final double heightToWidthRatio = 1.63;
     int clickedX, clickedY; // For window drag event: need to keep track of original click location
-
+    static int instanceID;
+    private HashMap<String,CalculatorButton> buttonsByName = new HashMap<>();
+    private CalculatorButton lastButtonClicked = null;
+    private Double memorizedNumber = null;
+	private Double firstOperand = null;
+	private TwoOperandButton currentOperatorButton = null;
+    
 	public Calculator() 
 	{
 		this.setMinimumSize(new Dimension(200,0));
 		this.setUndecorated(true);
 		this.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+
 		
 		JPanel contentPane = new JPanel() {  
+			private static final long serialVersionUID = 2099812517613916407L;
+
 			// draw background image on resize
 			public void paintComponent(Graphics g) { 
 				g.drawImage(FileUtils.getImage("assets/images/background.png"), 0, 0, this.getWidth(), this.getHeight(), this);  
@@ -65,7 +71,7 @@ public class Calculator extends JFrame{
         	System.exit(0);
         });
         
-		screen = new JLabel("0", SwingConstants.RIGHT);
+		screen = new JLabel("", SwingConstants.RIGHT);
 		screen.setFont(this.getBaseFont());
 		GridBagConstraints screenConstraints = new GridBagConstraints();
 		screenConstraints.anchor=GridBagConstraints.NORTH;
@@ -83,7 +89,7 @@ public class Calculator extends JFrame{
         this.add(keyboard,keyboardConstraints);
 		
         String[][] buttonsLayout = {
-			{ 	"MRC",	"M+", 	"M-", 	"CE", 	"ON-C" },
+			{ 	"MRC",	"M+", 	"M-", 	"CE", 	"ON/C" },
 			{ 	"7", 	"8",	"9", 	"%", 	"√" 	},
 			{ 	"4" , 	"5", 	"6", 	"×", 	"÷" 	},
 			{ 	"1" , 	"2", 	"3", 	"+", 	"-" 	},
@@ -166,6 +172,7 @@ public class Calculator extends JFrame{
 	
 	void addKeyboardButtons(String[][] textMatrix, JPanel keyboard) {
 		GridBagConstraints c;
+		CalculatorButton button;
 		
         for (int gridRow = 0;gridRow<textMatrix.length;gridRow++) {
         	for (int gridCol = 0;gridCol<textMatrix[gridRow].length;gridCol++) {
@@ -179,7 +186,9 @@ public class Calculator extends JFrame{
         				c.gridheight = 2;
         			}
         			
-        			keyboard.add( ButtonFactory.create(textMatrix[gridRow][gridCol], this), c);
+        			button = ButtonFactory.create(textMatrix[gridRow][gridCol], this);
+        			keyboard.add( button, c);
+        			this.buttonsByName.put(button.getName(), button);
         		}
         	}
         }
@@ -199,8 +208,16 @@ public class Calculator extends JFrame{
 		screen.setText(errorMessage); 
 	}
 	
-	public Double getDisplayedNumber()	{
-		return Double.parseDouble( screen.getText() );
+	public Double getDisplayNumber()	{
+		Double result;
+		
+		if (screen.getText().equals("")) {
+			result = 0.;
+		} else {
+			result = Double.parseDouble( screen.getText() );
+		}
+		
+		return result;
 	}
 	
 	public boolean errorIsDisplayed() {
@@ -249,7 +266,14 @@ public class Calculator extends JFrame{
 		contentPaneLayout.setConstraints(this.closeButton, closeButtonConstraints);
 		this.closeButton.setPreferredSize(new Dimension(	this.getPercentWidth(4),
 				this.getPercentWidth(4)));
-
+		double d=9.0;
+		
+		int i=9;
+		
+		if (i == (int) d)
+		{
+			
+		}
 
 		GridBagConstraints screenConstraints = contentPaneLayout.getConstraints(this.screen);
 		screenConstraints.insets=new Insets(this.getPercentHeight(14.4),0,0,0);
@@ -297,6 +321,43 @@ public class Calculator extends JFrame{
 	public Font getBaseFont() {
 		return this.baseFont;
 	}
+
+    public void activateButtons(String[] buttonText) {
+    	for (String buttonName : buttonText) {
+    		this.buttonsByName.get("button_" + buttonName).onClick();
+    	}
+    }
+	
+    public CalculatorButton getLastButtonClicked() {
+    	return this.lastButtonClicked;
+    }
+    
+    public void setLastButtonClicked(CalculatorButton b) {
+    	this.lastButtonClicked = b;
+    }
+    
+    public Double getMemorizedNumber() {
+    	return this.memorizedNumber;
+    }
+    
+    public void setMemorizedNumber(Double n) {
+    	this.memorizedNumber = n;
+    }
+    
+    public Double getFirstOperand() {
+    	return this.firstOperand;
+    }
+    
+    public void setFirstOperand(Double n) {
+    	this.firstOperand = n;
+    }
+    public TwoOperandButton getCurrentOperatorButton() {
+    	return this.currentOperatorButton;
+    }
+    
+    public void setCurrentOperatorButton(TwoOperandButton b) {
+    	this.currentOperatorButton = b;
+    }
 }
 
 

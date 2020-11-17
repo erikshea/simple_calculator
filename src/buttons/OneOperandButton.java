@@ -1,19 +1,16 @@
 package buttons;
 
-import java.awt.event.ActionEvent;
-
 import application.Calculator;
 
 public class OneOperandButton extends CalculatorButton {
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -6671161224512114057L;
 	public OneOperandButton(String text, Calculator c) {
 		super(text, c);
 	}
 
 	public void onClick() {
 		if ( !this.calculator.errorIsDisplayed() ) {
-			Double displayedNumber=this.calculator.getDisplayedNumber();
+			Double displayedNumber=this.calculator.getDisplayNumber();
 		
 			switch (this.getText()) {
 			case "√":

@@ -1,13 +1,9 @@
 package buttons;
 
-import java.awt.event.ActionEvent;
-
 import application.Calculator;
 
 public class TwoOperandButton extends CalculatorButton {
-	private static final long serialVersionUID = 1L;
-	private static Double firstOperand = null;
-	private static TwoOperandButton currentOperatorButton = null;
+	private static final long serialVersionUID = 1307603184797728542L;
 	
 	
 	public TwoOperandButton(String text, Calculator c) {
@@ -15,19 +11,20 @@ public class TwoOperandButton extends CalculatorButton {
 	}
 	
 	public void onClick() {
-		if (TwoOperandButton.currentOperatorButton == null){ 
+		if (this.calculator.getCurrentOperatorButton() == null){ 
 			// If no previous operator, both operands are displayed number
-			TwoOperandButton.firstOperand = this.calculator.getDisplayedNumber();
-			TwoOperandButton.currentOperatorButton = this;
+			this.calculator.setFirstOperand(this.calculator.getDisplayNumber());
 		} else {
-			this.processOperator();
+			this.calculator.getCurrentOperatorButton().processOperator();
 		}
+		
+		this.calculator.setCurrentOperatorButton(this);
 		super.onClick();
 	}
 
 	public void processOperator() {
 		if (!this.calculator.errorIsDisplayed()) {
-			Double displayedNumber=this.calculator.getDisplayedNumber();
+			Double displayedNumber=this.calculator.getDisplayNumber();
 			
 			switch (this.getText()) {
 			case "÷":
@@ -35,33 +32,33 @@ public class TwoOperandButton extends CalculatorButton {
 					this.calculator.displayError("Cannot divide by zero");
 					displayedNumber=null;
 				 } else {
-					 displayedNumber = TwoOperandButton.firstOperand  / displayedNumber;
+					 displayedNumber = this.calculator.getFirstOperand()  / displayedNumber;
 				 }
 				 break;
 				 
 			case "×":
-				displayedNumber = TwoOperandButton.firstOperand  * displayedNumber;
+				displayedNumber = this.calculator.getFirstOperand()  * displayedNumber;
 			break;
 			case "-":
-				displayedNumber = TwoOperandButton.firstOperand  - displayedNumber;
+				displayedNumber = this.calculator.getFirstOperand()  - displayedNumber;
 			break;
 			case "+":
-				displayedNumber = TwoOperandButton.firstOperand  + displayedNumber;
+				displayedNumber = this.calculator.getFirstOperand()  + displayedNumber;
 			break; 
 			}	
 
-			TwoOperandButton.firstOperand = displayedNumber;
 			this.calculator.setDisplayedNumber(displayedNumber);
+			this.calculator.setFirstOperand(displayedNumber);
 		}
 	}
 	
-	public static void processCurrentOperator() {
-		if ( TwoOperandButton.currentOperatorButton != null ) {
-			TwoOperandButton.currentOperatorButton.processOperator();
+	public void processCurrentOperator() {
+		if ( this.calculator.getCurrentOperatorButton() != null ) {
+			this.calculator.getCurrentOperatorButton().processOperator();
 		}
 	}
-	
-	public static void resetCurrentOperator() {
-		TwoOperandButton.currentOperatorButton = null;
-	}
+	/*
+	public void resetCurrentOperator() {
+		this.calculator.setCurrentOperatorButton(null);
+	}*/
 }

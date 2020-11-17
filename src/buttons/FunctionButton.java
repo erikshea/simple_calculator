@@ -2,18 +2,15 @@ package buttons;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 
 import application.Calculator;
 
 public class FunctionButton extends CalculatorButton {
-	private static final long serialVersionUID = 1L;
-	private static Double memorizedNumber = null;
+	private static final long serialVersionUID = 1269194353540007205L;
 	
 	public FunctionButton(String text, Calculator c) {
 		super(text, c);
-		if (this.getText() == "ON-C") {
+		if (this.getText() == "ON/C") {
 			this.baseFileName = "button_on";
 			this.setForeground(Color.white);
 		}
@@ -22,35 +19,41 @@ public class FunctionButton extends CalculatorButton {
 	public void onClick() {
 		switch (this.getText()) {
 		case "=":
-			TwoOperandButton.processCurrentOperator();
-			TwoOperandButton.resetCurrentOperator();
+			if (this.calculator.getCurrentOperatorButton() != null) {
+				this.calculator.getCurrentOperatorButton().processOperator();
+			}
+			
+			this.calculator.setCurrentOperatorButton(null);
 			break;
-		case "ON-C":
-			FunctionButton.memorizedNumber = null;
-			TwoOperandButton.resetCurrentOperator();
+		case "ON/C":
+			calculator.setMemorizedNumber(null);
+			this.calculator.setCurrentOperatorButton(null);
 		case "CE":
-			this.calculator.setDisplayedNumber(0.);
-			TwoOperandButton.resetCurrentOperator();
+			this.calculator.setDisplayText("");
 			break;
 		}
 		
 		if (!this.calculator.errorIsDisplayed()) {
 			switch (this.getText()) {
 			case "M+":
-				if (FunctionButton.memorizedNumber == null) {
-					FunctionButton.memorizedNumber = this.calculator.getDisplayedNumber();
+				if (calculator.getMemorizedNumber() == null) {
+					calculator.setMemorizedNumber( this.calculator.getDisplayNumber() );
 				} else {
-					this.calculator.setDisplayedNumber( FunctionButton.memorizedNumber + this.calculator.getDisplayedNumber());
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() + this.calculator.getDisplayNumber() );
 				}
 				break;
 			case "M-":
-				if (FunctionButton.memorizedNumber != null) {
-					this.calculator.setDisplayedNumber( FunctionButton.memorizedNumber - this.calculator.getDisplayedNumber());
+				if ( this.calculator.getLastButtonClicked() != null && this.calculator.getLastButtonClicked().getText().equals("MRC") ) {
+					calculator.setMemorizedNumber(null);
+				}
+				
+				if (calculator.getMemorizedNumber() != null) {
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() - this.calculator.getDisplayNumber() );
 				}
 				break;
 			case "MRC":
-				if (FunctionButton.memorizedNumber != null) {
-					this.calculator.setDisplayedNumber(FunctionButton.memorizedNumber);
+				if (calculator.getMemorizedNumber() != null) {
+					this.calculator.setDisplayedNumber( calculator.getMemorizedNumber() );
 				}
 				break;
 			}

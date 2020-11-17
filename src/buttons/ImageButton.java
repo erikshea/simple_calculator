@@ -2,12 +2,8 @@ package buttons;
 
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +11,7 @@ import javax.swing.JButton;
 import util.FileUtils;
 
 public class ImageButton extends JButton {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2735237343299882848L;
 	protected Dimension imageDimensions; // Dimensions of button images
 	protected String baseFileName;
 	
