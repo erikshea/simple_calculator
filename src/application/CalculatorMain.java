@@ -8,15 +8,17 @@ public class CalculatorMain {
 
 	public static void main(String[] args) {
 		Calculator calc = new Calculator();
-		calc.setUndecorated(true);
-		calc.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 		
-		calc.setLocation(	(Toolkit.getDefaultToolkit().getScreenSize().width - calc.getWidth() )/2,
-							(Toolkit.getDefaultToolkit().getScreenSize().height - calc.getHeight() )/2);
+		calc.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width/8,0));
 
+		int centeredWindowX = (int) (Toolkit.getDefaultToolkit().getScreenSize().width - calc.getPreferredSize().getWidth() )/2;
+		int centeredWindowY = (int) (Toolkit.getDefaultToolkit().getScreenSize().height - calc.getPreferredSize().getHeight() )/2;
+		calc.setLocation(centeredWindowX,centeredWindowY);
+		
+		
 		calc.pack(); 
 		calc.setVisible(true);
-		calc.setResizable(false);
+		calc.setResizable(true);
 	}
 	
 }

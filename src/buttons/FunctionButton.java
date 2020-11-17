@@ -1,6 +1,11 @@
-package application;
+package buttons;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+
+import application.Calculator;
 
 public class FunctionButton extends CalculatorButton {
 	private static final long serialVersionUID = 1L;
@@ -8,9 +13,13 @@ public class FunctionButton extends CalculatorButton {
 	
 	public FunctionButton(String text, Calculator c) {
 		super(text, c);
+		if (this.getText() == "ON-C") {
+			this.baseFileName = "button_on";
+			this.setForeground(Color.white);
+		}
 	}
 	
-	public void onClick(ActionEvent e) {
+	public void onClick() {
 		switch (this.getText()) {
 		case "=":
 			TwoOperandButton.processCurrentOperator();
@@ -46,7 +55,12 @@ public class FunctionButton extends CalculatorButton {
 				break;
 			}
 		}
-		
+		super.onClick();
 	}
+	
+    protected void repaintEvent() {
+		super.repaintEvent();
+		this.setFont( new Font(this.getFont().getFamily(), Font.BOLD, (int) this.imageDimensions.getWidth()*1/3 ) );
+    }
 
 }

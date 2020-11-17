@@ -1,6 +1,8 @@
-package application;
+package buttons;
 
 import java.awt.event.ActionEvent;
+
+import application.Calculator;
 
 public class OneOperandButton extends CalculatorButton {
 	private static final long serialVersionUID = 1L;
@@ -9,7 +11,7 @@ public class OneOperandButton extends CalculatorButton {
 		super(text, c);
 	}
 
-	public void onClick(ActionEvent e) {
+	public void onClick() {
 		if ( !this.calculator.errorIsDisplayed() ) {
 			Double displayedNumber=this.calculator.getDisplayedNumber();
 		
@@ -22,14 +24,6 @@ public class OneOperandButton extends CalculatorButton {
 					displayedNumber = Math.sqrt(displayedNumber);
 				}
 				break;
-			case "¹/ₓ": 
-					if ( displayedNumber == 0) {
-						this.calculator.displayError("Cannot divide by zero");
-						displayedNumber=null;
-					} else {
-						displayedNumber = 1 / displayedNumber;
-					}
-				break;
 			case "%":
 				displayedNumber = displayedNumber / 100;
 				break;
@@ -39,8 +33,12 @@ public class OneOperandButton extends CalculatorButton {
 			}
 			
 			this.calculator.setDisplayedNumber(displayedNumber);
+			super.onClick();
 		}
 		
 	}
-
+    protected void repaintEvent() {
+		super.repaintEvent();
+		this.setFont( this.getFont().deriveFont( (float) this.imageDimensions.getWidth()*1/2 ) );
+    }
 }

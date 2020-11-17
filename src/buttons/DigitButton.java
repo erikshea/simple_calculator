@@ -1,7 +1,9 @@
-package application;
+package buttons;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+
+import application.Calculator;
 
 public class DigitButton extends CalculatorButton {
 	private static final long serialVersionUID = 1L;
@@ -10,7 +12,7 @@ public class DigitButton extends CalculatorButton {
 		super(s, c);
 	}
 
-	public void onClick(ActionEvent e) {
+	public void onClick() {
 		String displayString ="0";
 		
 		if ( this.getClass().isInstance(DigitButton.getLastButtonClicked()) ) { 
@@ -31,5 +33,6 @@ public class DigitButton extends CalculatorButton {
 		if ( displayString.length() < calculator.getMaxDisplaySize() ){
 			calculator.setDisplayText( displayString );
 		}
+		super.onClick();
 	}
 }

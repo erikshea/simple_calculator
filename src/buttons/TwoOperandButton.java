@@ -1,6 +1,8 @@
-package application;
+package buttons;
 
 import java.awt.event.ActionEvent;
+
+import application.Calculator;
 
 public class TwoOperandButton extends CalculatorButton {
 	private static final long serialVersionUID = 1L;
@@ -12,7 +14,7 @@ public class TwoOperandButton extends CalculatorButton {
 		super(text, c);
 	}
 	
-	public void onClick(ActionEvent e) {
+	public void onClick() {
 		if (TwoOperandButton.currentOperatorButton == null){ 
 			// If no previous operator, both operands are displayed number
 			TwoOperandButton.firstOperand = this.calculator.getDisplayedNumber();
@@ -20,6 +22,7 @@ public class TwoOperandButton extends CalculatorButton {
 		} else {
 			this.processOperator();
 		}
+		super.onClick();
 	}
 
 	public void processOperator() {
@@ -36,7 +39,7 @@ public class TwoOperandButton extends CalculatorButton {
 				 }
 				 break;
 				 
-			case "✕":
+			case "×":
 				displayedNumber = TwoOperandButton.firstOperand  * displayedNumber;
 			break;
 			case "-":

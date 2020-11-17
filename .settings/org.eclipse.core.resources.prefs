@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/application/ButtonFactory.java=UTF-8
 encoding//src/application/Calculator.java=UTF-8
-encoding//src/application/OneOperandButton.java=UTF-8
-encoding//src/application/TwoOperandButton.java=UTF-8
+encoding//src/buttons/ButtonFactory.java=UTF-8
+encoding//src/buttons/OneOperandButton.java=UTF-8
+encoding//src/buttons/TwoOperandButton.java=UTF-8
