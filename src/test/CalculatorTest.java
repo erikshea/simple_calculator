@@ -1,17 +1,15 @@
 package test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import application.Calculator;
-import buttons.CalculatorButton;
+import application.SimpleCalculator;
 
-class CalculatorTest extends Calculator {
+class CalculatorTest extends SimpleCalculator {
 	private static final long serialVersionUID = 7060761027810301604L;
 
 	@Test
 	void Storyboard_1() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getDisplayText().equals(""));
 		
 		calc.activateButtons(new String[]{"2"});
@@ -26,7 +24,7 @@ class CalculatorTest extends Calculator {
 	
 	@Test
 	void Storyboard_2() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getDisplayText().equals(""));
 		
 		calc.activateButtons(new String[]{"2"});
@@ -41,7 +39,7 @@ class CalculatorTest extends Calculator {
 
 	@Test
 	void Storyboard_3() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getDisplayText().equals(""));
 		
 		calc.activateButtons(new String[]{"2"});
@@ -65,7 +63,7 @@ class CalculatorTest extends Calculator {
 
 	@Test
 	void Storyboard_4a() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getDisplayText().equals(""));
 		
 		calc.activateButtons(new String[]{"2"});
@@ -90,7 +88,7 @@ class CalculatorTest extends Calculator {
 	
 	@Test
 	void Storyboard_4b() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getDisplayText().equals(""));
 		
 		calc.activateButtons(new String[]{"2"});
@@ -114,7 +112,7 @@ class CalculatorTest extends Calculator {
 	
 	@Test
 	void Memory_Example_1() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"5", "×", "2", "7", "="});
 		assert(calc.getDisplayText().equals("135"));
 
@@ -131,7 +129,7 @@ class CalculatorTest extends Calculator {
 	
 	@Test
 	void Memory_Example_2() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"4", "7", "8", "×", "2", "="});
 		assert(calc.getDisplayText().equals("956"));
 
@@ -145,7 +143,7 @@ class CalculatorTest extends Calculator {
 	
 	@Test
 	void Memory_Example_3() {
-		Calculator calc = new Calculator();
+		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"ON/C"});
 		assert(calc.getDisplayText().equals(""));
 		assert(calc.getMemorizedNumber() == null);

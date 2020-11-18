@@ -1,8 +1,5 @@
 package buttons;
 
-
-import application.Calculator;
-
 public class DigitButton extends CalculatorButton {
 	private static final long serialVersionUID = 1325608133794032548L;
 

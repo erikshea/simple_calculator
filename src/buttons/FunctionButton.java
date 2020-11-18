@@ -3,8 +3,6 @@ package buttons;
 import java.awt.Color;
 import java.awt.Font;
 
-import application.Calculator;
-
 public class FunctionButton extends CalculatorButton {
 	private static final long serialVersionUID = 1269194353540007205L;
 	
@@ -31,15 +29,20 @@ public class FunctionButton extends CalculatorButton {
 		case "CE":
 			this.calculator.setDisplayText("");
 			break;
+		case "MRC":
+			if (calculator.getMemorizedNumber() != null) {
+				this.setDisplayedNumber( calculator.getMemorizedNumber() );
+			}
+			break;
 		}
 		
 		if (!this.calculator.errorIsDisplayed()) {
 			switch (this.getText()) {
 			case "M+":
 				if (calculator.getMemorizedNumber() == null) {
-					calculator.setMemorizedNumber( this.calculator.getDisplayNumber() );
+					calculator.setMemorizedNumber( this.getDisplayNumber() );
 				} else {
-					calculator.setMemorizedNumber( calculator.getMemorizedNumber() + this.calculator.getDisplayNumber() );
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() + this.getDisplayNumber() );
 				}
 				break;
 			case "M-":
@@ -48,12 +51,7 @@ public class FunctionButton extends CalculatorButton {
 				}
 				
 				if (calculator.getMemorizedNumber() != null) {
-					calculator.setMemorizedNumber( calculator.getMemorizedNumber() - this.calculator.getDisplayNumber() );
-				}
-				break;
-			case "MRC":
-				if (calculator.getMemorizedNumber() != null) {
-					this.calculator.setDisplayedNumber( calculator.getMemorizedNumber() );
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() - this.getDisplayNumber() );
 				}
 				break;
 			}
@@ -63,7 +61,7 @@ public class FunctionButton extends CalculatorButton {
 	
     protected void repaintEvent() {
 		super.repaintEvent();
-		this.setFont( new Font(this.getFont().getFamily(), Font.BOLD, (int) this.imageDimensions.getWidth()*1/3 ) );
+		this.setFont( new Font(this.getFont().getFamily(), Font.BOLD, (int) ( this.getWidth()*1/3 )) );
     }
 
 }

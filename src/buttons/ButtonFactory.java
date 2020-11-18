@@ -1,18 +1,26 @@
 package buttons;
 
-import application.Calculator;
-
+/**
+ * Create button objects according to button text
+ *
+ */
 public class ButtonFactory {
-	public static CalculatorButton create(String t, Calculator calc) {
-		switch(t) {
+	/**
+	 * Create and return correct button object. Subclass depends on text parameter.
+	 * @param t button text
+	 * @param calc object conforming to Calculator interface
+	 * @return CalculatorButton subclass
+	 */
+	public static CalculatorButton create(String text, Calculator calc) {
+		switch(text) {
 			case "%": case "√": case "±":
-				return new OneOperandButton(t, calc);
+				return new OneOperandButton(text, calc);
 			case "×": case "÷": case "+": case "-":
-				return new TwoOperandButton(t, calc);
+				return new TwoOperandButton(text, calc);
 			case "MRC": case "M+": case "M-": case "CE": case "ON/C": case "=":
-				return new FunctionButton(t, calc);
+				return new FunctionButton(text, calc);
 			default:
-				return new DigitButton(t,calc);
+				return new DigitButton(text,calc);
 		}
 	}
 	
