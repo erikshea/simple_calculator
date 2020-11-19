@@ -12,7 +12,7 @@ public class ButtonFactory {
 	 * @return CalculatorButton subclass
 	 */
 	public static CalculatorButton create(String text, Calculator calc) {
-		return switch(text) {
+		return switch(text) { 
 			case "=" -> new EqualsButton(text, calc);
 			case "%", "√", "±"  -> new OneOperandButton(text, calc);
 			case "×", "÷", "+", "-" -> new TwoOperandButton(text, calc);
