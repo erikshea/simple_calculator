@@ -62,17 +62,6 @@ public interface Calculator {
     public void setMemorizedNumber(Double n);
     
     /**
-     * Get first operand entered in calculator
-     * @return first operand
-     */
-    public Double getFirstOperand();
-    
-    /**
-     * Set first operand entered in calculator to parameter Double
-     */
-    public void setFirstOperand(Double n);
-    
-    /**
      * Get current operation button 
      * @return reference to operation button
      */

@@ -1,5 +1,8 @@
 package buttons;
 
+/**
+ * Button for digits and decimal sign
+ */
 public class DigitButton extends CalculatorButton {
 	private static final long serialVersionUID = 1325608133794032548L;
 
@@ -14,18 +17,19 @@ public class DigitButton extends CalculatorButton {
 			// if previous button clicked was digit, keep entering
 			displayString = calculator.getDisplayText();
 		}
-		
-		if ( this.getText() != "."){
-			displayString += this.getText();
-		}  else if (!displayString.contains(".")) {
-			displayString = displayString + ".";
+
+
+		if ( this.getText() != "."){ // if digit (not decimal sign) is entered
+			displayString += this.getText(); // append to displayed number
+		}  else if (!displayString.contains(".")) { // else, decimal sign is entered. If display string doesn't already contain a decimal sign 
+			displayString = displayString + "."; // append decimal sign to displayed number
 		}
 
-		if ( displayString.startsWith("0") && !displayString.contains(".")) {
-			displayString = displayString.substring(1);
+		if ( displayString.startsWith("0") && !displayString.contains(".")) { // If leading 0 and no decimal sign
+			displayString = displayString.substring(1);	// remove superfluous leading 0
 		}
 		
-		if ( displayString.length() < calculator.getMaxDisplaySize() ){
+		if ( displayString.length() < calculator.getMaxDisplaySize() ){ // If smaller than max allowed digits on screen
 			calculator.setDisplayText( displayString );
 		}
 		super.onClick();

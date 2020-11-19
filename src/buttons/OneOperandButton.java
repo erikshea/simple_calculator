@@ -1,5 +1,8 @@
 package buttons;
 
+/**
+ * Button for operations that involve one operand only
+ */
 public class OneOperandButton extends CalculatorButton {
 	private static final long serialVersionUID = -6671161224512114057L;
 	public OneOperandButton(String text, Calculator c) {
@@ -13,6 +16,7 @@ public class OneOperandButton extends CalculatorButton {
 			switch (this.getText()) {
 			case "√":
 				if ( displayedNumber < 0) {
+					// Attempting to find root of negative number displays error
 					this.calculator.setDisplayText("Cannot find square root of a negative number.");
 					displayedNumber=null;
 				} else {
@@ -27,13 +31,17 @@ public class OneOperandButton extends CalculatorButton {
 				break;
 			}
 			
-			this.setDisplayedNumber(displayedNumber);
+			this.setDisplayNumber(displayedNumber);
 			super.onClick();
 		}
 		
 	}
-    protected void repaintEvent() {
-		super.repaintEvent();
+	
+	/**
+	 * One operand buttons have their own font size
+	 */
+    protected void resizeIcons() {
+		super.resizeIcons();
 		this.setFont( this.getFont().deriveFont( (float) this.getWidth()*1/2 ) );
     }
 }

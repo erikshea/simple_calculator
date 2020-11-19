@@ -1,7 +1,7 @@
 package buttons;
 
 /**
- * Base calculator button class, inherited by all 
+ * Base calculator button class, inherited by all other buttons
  * @author Erik Shea
  *
  */
@@ -29,11 +29,10 @@ public abstract class CalculatorButton extends ImageButton{
 	};
 	
 	/**
-	 * Redefine repaintEvent to resize font according to current button width
+	 * Resize font according to current button width
 	 */
-	@Override
-    protected void repaintEvent() {
-		super.repaintEvent();
+    protected void resizeIcons() {
+		super.resizeIcons();
 		
 		this.setFont( this.getFont().deriveFont( (float) this.getWidth()*3/5 ) );
     }
@@ -59,7 +58,7 @@ public abstract class CalculatorButton extends ImageButton{
 	 * Set number displayed on calculator screen to a double
 	 * @param d double to display
 	 */
-	public void setDisplayedNumber(Double d){
+	public void setDisplayNumber(Double d){
 		if (d != null) {
 			if ( d  == d.intValue() ) {
 				// if double is X.0, remove superfluous decimal fraction

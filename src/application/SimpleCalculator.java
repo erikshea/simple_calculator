@@ -28,7 +28,7 @@ import buttons.Calculator;
 import util.FileUtils;
 
 /**
- * Calculator class creates interface elements and deals with presentation logic.
+ * SimpleCalculator class creates interface elements and deals with presentation logic.
  * @author Erik Shea
  *
  */
@@ -226,7 +226,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 			Cursor currentCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 			
 		    public void mousePressed(MouseEvent e) {
-		    	keyboard.setVisible(false); // Hide keyboard to avoid flickering
+		    	keyboard.setVisible(false); // Hide keyboard to resize smoothly
 		    	currentCursor = new Cursor(Cursor.NW_RESIZE_CURSOR); 
 		    	me.setCursor(currentCursor);
 		    	
@@ -432,13 +432,6 @@ public class SimpleCalculator extends JFrame implements Calculator{
     	this.memorizedNumber = n;
     }
     
-    public Double getFirstOperand() {
-    	return this.firstOperand;
-    }
-    
-    public void setFirstOperand(Double n) {
-    	this.firstOperand = n;
-    }
     public TwoOperandButton getCurrentOperatorButton() {
     	return this.currentOperatorButton;
     }

@@ -139,7 +139,7 @@ class CalculatorTest extends SimpleCalculator {
 		calc.activateButtons(new String[]{"M+", "MRC"});
 		assert(calc.getDisplayText().equals("1057"));
 	}
-	
+	/*
 	
 	@Test
 	void Memory_Example_3() {
@@ -239,7 +239,7 @@ class CalculatorTest extends SimpleCalculator {
 		calc.activateButtons(new String[]{"MRC"});
 		assert(calc.getDisplayText().equals("696"));
 		assert(calc.getMemorizedNumber() == 696);
-	}
+	}*/
 	
 	
 	
