@@ -6,7 +6,7 @@ package buttons;
  */
 public class TwoOperandButton extends CalculatorButton {
 	private static final long serialVersionUID = 1307603184797728542L;
-	public Double firstOperand;
+	private Double firstOperand;
 	
 	public TwoOperandButton(String text, Calculator c) {
 		super(text, c);
@@ -59,5 +59,13 @@ public class TwoOperandButton extends CalculatorButton {
 			this.setNumberOnScreen(result);
 			this.calculator.setCurrentOperatorButton(null);
 		}
+	}
+	
+	public Double getFirstOperand() {
+		return this.firstOperand;
+	}
+	
+	public void setFirstOperand(Double n) {
+		this.firstOperand = n;
 	}
 }

@@ -69,6 +69,17 @@ class CalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
+	void TestCase_5b() {
+		SimpleCalculator calc = new SimpleCalculator();
+		
+		calc.activateButtons(new String[]{"1",".",".","2"});
+		assert(calc.getTextOnScreen().equals("1.2"));
+		
+		calc.activateButtons(new String[]{".","3"});
+		assert(calc.getTextOnScreen().equals("1.23"));
+	}
+	
+	@Test
 	void TestCase_6() {
 		SimpleCalculator calc = new SimpleCalculator();
 		

@@ -5,7 +5,6 @@ package buttons;
  */
 public class EqualsButton extends CalculatorButton {
 	private static final long serialVersionUID = 1269194353540007205L;
-	private Double currentOperandForRepeatedClicks=null;
 	private TwoOperandButton currentOperatorForRepeatedClicks=null;
 	
 	public EqualsButton(String text, Calculator c) {
@@ -14,19 +13,19 @@ public class EqualsButton extends CalculatorButton {
 	
 	public void onClick() {
 		if (!this.calculator.errorIsDisplayed()) {
-			// Special case: if repeated clicks on same (equal) button
+			// Special case: if repeated clicks on "equal"
 			if (this.equals(this.calculator.getLastButtonClicked()) && this.currentOperatorForRepeatedClicks != null) {
-				// current result becomes first operand
-				this.currentOperatorForRepeatedClicks.firstOperand = this.getNumberOnScreen();
-				// Result from previous operation becomes second operand 
-				this.setNumberOnScreen(currentOperandForRepeatedClicks);
+				// this is actually the second operand of previous operation (saved as first operand on operation completion)
+				Double temp = this.currentOperatorForRepeatedClicks.getFirstOperand(); 
 				
-				this.currentOperatorForRepeatedClicks.processOperator(); // Process last current operator
+				// result from previous operation becomes first operand 
+				this.currentOperatorForRepeatedClicks.setFirstOperand(this.getNumberOnScreen()); 
+				this.setNumberOnScreen(temp); // second operand of previous operation becomes second operand of new operation  
+				
+				this.currentOperatorForRepeatedClicks.processOperator();
 			} else if (this.calculator.getCurrentOperatorButton() != null) { // Else, if we already entered an operator
-				currentOperandForRepeatedClicks = this.getNumberOnScreen(); // Current operation's left operand is saved in case we click again on equal
-				// Current operation is saved in case we click again on equal (this.calculator.getCurrentOperatorButton() is reset when processed)
+				// Current operation is saved in case we click again on equal
 				this.currentOperatorForRepeatedClicks = this.calculator.getCurrentOperatorButton();
-
 				this.calculator.getCurrentOperatorButton().processOperator();
 			}
 		}
