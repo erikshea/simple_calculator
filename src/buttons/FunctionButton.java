@@ -9,8 +9,6 @@ import java.awt.Font;
  */
 public class FunctionButton extends CalculatorButton {
 	private static final long serialVersionUID = 1269194353540007205L;
-	private Double currentOperandForEquals=null;
-	private TwoOperandButton currentOperatorForEquals=null;
 	
 	public FunctionButton(String text, Calculator c) {
 		super(text, c);
@@ -22,32 +20,14 @@ public class FunctionButton extends CalculatorButton {
 	
 	public void onClick() {
 		switch (this.getText()) {
-		case "=":
-			if (!this.calculator.errorIsDisplayed()) {
-				if (this.equals(this.calculator.getLastButtonClicked()) && this.currentOperatorForEquals != null) {
-					this.currentOperatorForEquals.firstOperand = this.getDisplayNumber();
-					this.setDisplayNumber(currentOperandForEquals);
-					this.currentOperatorForEquals.processOperator();
-					return;
-				}
-				currentOperandForEquals = this.getDisplayNumber();
-	
-				if (this.calculator.getCurrentOperatorButton() != null) { // If we already entered an operator
-					this.currentOperatorForEquals = this.calculator.getCurrentOperatorButton();
-					this.calculator.getCurrentOperatorButton().processOperator();
-				}
-			}
-			
-			break;
 		case "ON/C":
-			calculator.setMemorizedNumber(null); // Erase memory
 			this.calculator.setCurrentOperatorButton(null); // Reset current operator
 		case "CE": // case applies to both CE and ON/C
-			this.calculator.setDisplayText("");
+			this.calculator.setTextOnScreen("");
 			break;
-		case "MRC": // Recall memory to screen
+		case "MRC": // Show memory (if exists) on screen 
 			if (calculator.getMemorizedNumber() != null) {
-				this.setDisplayNumber( calculator.getMemorizedNumber() );
+				this.setNumberOnScreen( calculator.getMemorizedNumber() );
 			}
 			break;
 		}
@@ -56,9 +36,9 @@ public class FunctionButton extends CalculatorButton {
 			switch (this.getText()) {
 			case "M+":
 				if (calculator.getMemorizedNumber() == null) { // If no number in memory, add current displayed number
-					calculator.setMemorizedNumber( this.getDisplayNumber() );
+					calculator.setMemorizedNumber( this.getNumberOnScreen() );
 				} else { // Else, add current number to memory
-					calculator.setMemorizedNumber( calculator.getMemorizedNumber() + this.getDisplayNumber() );
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() + this.getNumberOnScreen() );
 				}
 				break;
 			case "M-":
@@ -68,7 +48,7 @@ public class FunctionButton extends CalculatorButton {
 				}
 				
 				if (calculator.getMemorizedNumber() != null) {// Else, substract current number to memory
-					calculator.setMemorizedNumber( calculator.getMemorizedNumber() - this.getDisplayNumber() );
+					calculator.setMemorizedNumber( calculator.getMemorizedNumber() - this.getNumberOnScreen() );
 				}
 				break;
 			}

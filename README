@@ -1,0 +1,7 @@
+A simple implementation of a calculator, with basic memory functions.
+
+Screenshot:
+![Screenshot of SimpleCalculator](assets/readme/SimpleCalculator_screenshot.png?raw=true "Screenshot")
+
+Class diagram:
+![Class diagram of SimpleCalculator](assets/readme/SimpleCalculator_class_diagram.png?raw=true "Class diagram")

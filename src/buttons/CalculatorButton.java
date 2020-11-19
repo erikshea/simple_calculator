@@ -42,13 +42,13 @@ public abstract class CalculatorButton extends ImageButton{
 	 * Get number displayed on calculator screen, as a double
 	 * @return double equivalent of number on calculator screen
 	 */
-	public Double getDisplayNumber()	{
-		Double result;
+	public Double getNumberOnScreen()	{
+		Double result = null;
 		
-		if (calculator.getDisplayText().equals("")) {
+		if ( calculator.getTextOnScreen().equals("")) {
 			result = 0.;
-		} else {
-			result = Double.parseDouble( calculator.getDisplayText() );
+		} else  if (!this.calculator.errorIsDisplayed()){
+			result = Double.parseDouble( calculator.getTextOnScreen() );
 		}
 		
 		return result;
@@ -58,13 +58,13 @@ public abstract class CalculatorButton extends ImageButton{
 	 * Set number displayed on calculator screen to a double
 	 * @param d double to display
 	 */
-	public void setDisplayNumber(Double d){
+	public void setNumberOnScreen(Double d){
 		if (d != null) {
 			if ( d  == d.intValue() ) {
 				// if double is X.0, remove superfluous decimal fraction
-				calculator.setDisplayText( Integer.toString(d.intValue()) );
+				calculator.setTextOnScreen( Integer.toString(d.intValue()) );
 			} else {
-				calculator.setDisplayText(Double.toString(d));
+				calculator.setTextOnScreen(Double.toString(d));
 			}
 		}
 	}

@@ -7,7 +7,6 @@ import java.awt.Font;
  *
  */
 public interface Calculator {
-	
 	/**
 	 * Get calculator font
 	 * @return base font
@@ -18,19 +17,19 @@ public interface Calculator {
 	 * Get max digits allowed on screen
 	 * @return max digits
 	 */
-	public int getMaxDisplaySize();
+	public int getMaxDigitsOnScreen();
 	
 	/**
 	 * Make calculator display a string
 	 * @param s string to set calculator screen to
 	 */
-	public void setDisplayText(String s);
+	public void setTextOnScreen(String s);
 
 	/**
 	 * Get text displayed on screen
 	 * @return string displayed
 	 */
-	public String getDisplayText();
+	public String getTextOnScreen();
 	
 	/**
 	 * Is calculator showing an error?

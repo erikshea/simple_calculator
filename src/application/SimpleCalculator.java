@@ -34,8 +34,12 @@ import util.FileUtils;
  */
 public class SimpleCalculator extends JFrame implements Calculator{
 	private static final long serialVersionUID = 4380693977371341395L;
-	private final int maxDisplaySize = 20; // For input: max numbers on screen allowed at once
-	private final Font baseFont = new Font("Yu Gothic UI", Font.PLAIN, 0 ); // default font
+	private final int maxDigitsOnScreen = 14; // For input: max numbers on screen allowed at once
+	private final Font baseFont = new Font(	// Default font for UI
+		// Choose first installed font in a list of font names, by order of preference.
+		FileUtils.getFirstValidFontName(new String[] {"Yu Gothic UI","Segoe UI","Arial","SansSerif"})
+		, Font.PLAIN
+		, 0 ); // All font sizes will be set in resizeElements()
 	private final double heightToWidthRatio = 1.63; // Calculator size ratio stays constant during resizing
 	private JLabel screen;	// Calculator screen
 	private JPanel keyboard; // Calculator keyboard contains all instances of CalculatorButton
@@ -45,9 +49,8 @@ public class SimpleCalculator extends JFrame implements Calculator{
     private CalculatorButton lastButtonClicked = null; 
 	private TwoOperandButton currentOperatorButton = null;
     private Double memorizedNumber = null;
-	private Double firstOperand = null;
 	
-	// Used to simulate clicks in unit tests
+	// Keep track of buttons to simulate clicks in unit tests
     private HashMap<String,CalculatorButton> buttonsByName = new HashMap<>();
     
     /**
@@ -55,7 +58,6 @@ public class SimpleCalculator extends JFrame implements Calculator{
      */
 	public SimpleCalculator() 
 	{
-		
 		this.setMinimumSize(new Dimension(200,0));
 		
 		// Don't draw window frame, or bar on top
@@ -97,8 +99,8 @@ public class SimpleCalculator extends JFrame implements Calculator{
 
 			@Override
 			protected void paintComponent(Graphics g) {
-				if (me.errorIsDisplayed()) {
-					g.setFont(this.getFont().deriveFont(this.getFont().getSize() * 0.33f));
+				if (me.errorIsDisplayed()) { // On error, resize font
+					g.setFont(this.getFont().deriveFont(this.getFont().getSize() * 0.37f));
 				}
 				
 				super.paintComponent(g);
@@ -332,7 +334,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 		contentPaneLayout.setConstraints(this.screen, screenConstraints);
 		
 		// Screen font depends on calculator size
-		this.screen.setFont(this.screen.getFont().deriveFont( (float) this.getPercentHeight(7) ));
+		this.screen.setFont(this.screen.getFont().deriveFont( (float) this.getPercentHeight(6.3) ));
 		this.screen.setBorder(new EmptyBorder(0,this.getPercentWidth(3),00,this.getPercentWidth(3)));
 		this.screen.setPreferredSize(	new Dimension(	this.getPercentWidth(84),
 										this.getPercentHeight(14.6)));
@@ -389,27 +391,33 @@ public class SimpleCalculator extends JFrame implements Calculator{
     }
 
     /**
-     * Sets display text to s
+     * Sets display text to s, truncated to max screen size (if not error)
      */
-	public void setDisplayText(String s) {
+	public void setTextOnScreen(String s) {
+		if (!this.isErrorString(s) && s.length() > this.getMaxDigitsOnScreen()) {
+			s = s.substring(0,this.getMaxDigitsOnScreen());
+		}
 		this.screen.setText(s);
 	}
+	
     /**
      * get display text to s
      */
-	public String getDisplayText() {
+	public String getTextOnScreen() {
 		return this.screen.getText();
 	}
-
 	
-	/** Generic getters and setters **/
+	public boolean isErrorString(String s) {
+		return s.startsWith("Cannot");
+	}
 	
 	public boolean errorIsDisplayed() {
-		return this.getDisplayText().startsWith("Cannot");
+		return this.isErrorString(this.getTextOnScreen());
 	}
-
-	public int getMaxDisplaySize() {
-		return this.maxDisplaySize;
+	
+	/** Generic getters and setters **/
+	public int getMaxDigitsOnScreen() {
+		return this.maxDigitsOnScreen;
 	}
 	
 	public Font getBaseFont() {

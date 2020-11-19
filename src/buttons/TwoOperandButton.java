@@ -16,11 +16,13 @@ public class TwoOperandButton extends CalculatorButton {
 	if (!this.calculator.errorIsDisplayed()) {
 			if (this.calculator.getCurrentOperatorButton() == null) {
 				this.calculator.setCurrentOperatorButton(this);
-			} else {
+			} else 	// If last button clicked was another TwoOperandButton, don't process
+				 	//  so that new operator clicked becomes current operator 
+			if (!this.getClass().isInstance(this.calculator.getLastButtonClicked())){
 				this.calculator.getCurrentOperatorButton().processOperator();
 			}
 
-			this.firstOperand = this.getDisplayNumber();
+			this.firstOperand = this.getNumberOnScreen();
 			this.calculator.setCurrentOperatorButton(this);
 			super.onClick();
 		}
@@ -33,28 +35,28 @@ public class TwoOperandButton extends CalculatorButton {
 
 			switch (this.getText()) {
 			case "÷":
-				 if (this.getDisplayNumber() == 0) { // Show error on division by 0
-					this.calculator.setDisplayText("Cannot divide by zero");
+				 if (this.getNumberOnScreen() == 0) { // Show error on division by 0
+					this.calculator.setTextOnScreen("Cannot divide by zero");
 					result=null;
 				 } else {
-					 result = this.firstOperand  / this.getDisplayNumber();
+					 result = this.firstOperand  / this.getNumberOnScreen();
 				 }
 				 break;
 				 
 			case "×":
-				result = this.firstOperand  * this.getDisplayNumber();
+				result = this.firstOperand  * this.getNumberOnScreen();
 			break;
 			case "-":
-				result = this.firstOperand  - this.getDisplayNumber();
+				result = this.firstOperand  - this.getNumberOnScreen();
 			break;
 			case "+":
-				result = this.firstOperand  + this.getDisplayNumber();
+				result = this.firstOperand  + this.getNumberOnScreen();
 			break; 
 			}	
 
-			this.firstOperand = this.getDisplayNumber();
+			this.firstOperand = this.getNumberOnScreen();
 			
-			this.setDisplayNumber(result);
+			this.setNumberOnScreen(result);
 			this.calculator.setCurrentOperatorButton(null);
 		}
 	}

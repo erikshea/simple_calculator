@@ -13,11 +13,13 @@ public class ButtonFactory {
 	 */
 	public static CalculatorButton create(String text, Calculator calc) {
 		switch(text) {
+			case "=":
+			return new EqualsButton(text, calc);
 			case "%": case "√": case "±":
 				return new OneOperandButton(text, calc);
 			case "×": case "÷": case "+": case "-":
 				return new TwoOperandButton(text, calc);
-			case "MRC": case "M+": case "M-": case "CE": case "ON/C": case "=":
+			case "MRC": case "M+": case "M-": case "CE": case "ON/C":
 				return new FunctionButton(text, calc);
 			default:
 				return new DigitButton(text,calc);

@@ -43,8 +43,9 @@ public class ImageButton extends JButton {
 			this.imageDimensions = this.getSize(); // Get new size for icons
 			
 			this.resizeIcons();
-		}                        
+		}  
     }   
+    
     
     protected void resizeIcons() {
 		this.setIcon(this.getImageIcon("")); // Default icon

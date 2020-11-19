@@ -11,13 +11,13 @@ public class OneOperandButton extends CalculatorButton {
 
 	public void onClick() {
 		if ( !this.calculator.errorIsDisplayed() ) {
-			Double displayedNumber=this.getDisplayNumber();
+			Double displayedNumber=this.getNumberOnScreen();
 		
 			switch (this.getText()) {
 			case "√":
 				if ( displayedNumber < 0) {
 					// Attempting to find root of negative number displays error
-					this.calculator.setDisplayText("Cannot find square root of a negative number.");
+					this.calculator.setTextOnScreen("Cannot find square root of a negative number.");
 					displayedNumber=null;
 				} else {
 					displayedNumber = Math.sqrt(displayedNumber);
@@ -31,7 +31,7 @@ public class OneOperandButton extends CalculatorButton {
 				break;
 			}
 			
-			this.setDisplayNumber(displayedNumber);
+			this.setNumberOnScreen(displayedNumber);
 			super.onClick();
 		}
 		

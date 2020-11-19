@@ -15,7 +15,7 @@ public class DigitButton extends CalculatorButton {
 		
 		if ( this.getClass().isInstance(this.calculator.getLastButtonClicked()) ) { 
 			// if previous button clicked was digit, keep entering
-			displayString = calculator.getDisplayText();
+			displayString = calculator.getTextOnScreen();
 		}
 
 
@@ -29,8 +29,8 @@ public class DigitButton extends CalculatorButton {
 			displayString = displayString.substring(1);	// remove superfluous leading 0
 		}
 		
-		if ( displayString.length() < calculator.getMaxDisplaySize() ){ // If smaller than max allowed digits on screen
-			calculator.setDisplayText( displayString );
+		if ( displayString.length() <= calculator.getMaxDigitsOnScreen() ){ // If smaller than max allowed digits on screen
+			calculator.setTextOnScreen( displayString );
 		}
 		super.onClick();
 	}
