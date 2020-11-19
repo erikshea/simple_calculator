@@ -14,7 +14,6 @@ public abstract class CalculatorButton extends ImageButton{
 		this.baseFileName = "button"; // all calculator buttons share the same image by default
 		
 		this.calculator = calc;
-		this.setFont( this.calculator.getBaseFont() );
 		
 		this.addActionListener( e->{
 			this.onClick();

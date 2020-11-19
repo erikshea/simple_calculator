@@ -3,7 +3,6 @@
 
 A simple implementation of a calculator, with basic memory functions.
 
-**Screenshot:**
 ![Screenshot of SimpleCalculator](https://github.com/erikshea/simple_calculator/blob/master/assets/readme/SimpleCalculator_screenshot.png?raw=true)
 
 **Class diagram:**

@@ -29,9 +29,8 @@ public class DigitButton extends CalculatorButton {
 			displayString = displayString.substring(1);	// remove superfluous leading 0
 		}
 		
-		if ( displayString.length() <= calculator.getMaxDigitsOnScreen() ){ // If smaller than max allowed digits on screen
-			calculator.setTextOnScreen( displayString );
-		}
+		calculator.setTextOnScreen( displayString );
+
 		super.onClick();
 	}
 }

@@ -186,6 +186,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
         			
         			// ButtonFactory will create appropriate button type (digit, one operand...) according to label
         			button = ButtonFactory.create(textMatrix[gridRow][gridCol], this);
+        			button.setFont( this.getBaseFont() );
         			keyboard.add( button, c);
         			
         			// Add button to HashMap, for easy access in unit tests.
