@@ -82,98 +82,114 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="10">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="11">    
+  <association id="10">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="lastButtonClicked">        
-        <position height="18" width="90" x="574" y="566"/>      
-      </attribute>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="15" name="closeButton">        
-        <position height="18" width="67" x="503" y="783"/>      
-      </attribute>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="currentOperatorButton">        
-        <position height="18" width="117" x="597" y="869"/>      
-      </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="21" name="currentOperatorForRepeatedClicks">        
-        <position height="18" width="176" x="778" y="850"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="23">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="26">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="resizeButton">        
+      <attribute id="11" name="resizeButton">        
         <position height="18" width="71" x="497" y="727"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="30">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="31" name="buttonsByName">        
-        <position height="18" width="84" x="504" y="518"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="33">    
+  <generalization id="13">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <realization id="34">    
+  <association id="14">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="15" name="buttonsByName">        
+        <position height="18" width="84" x="495" y="494"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="17">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
+  <association id="18">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="19" name="currentOperatorButton">        
+        <position height="18" width="117" x="597" y="869"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="22">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="lastButtonClicked">        
+        <position height="18" width="90" x="552" y="557"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="26" name="closeButton">        
+        <position height="18" width="67" x="503" y="783"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="31">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="32" name="currentOperatorForRepeatedClicks">        
+        <position height="18" width="176" x="768" y="832"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1012" y="811"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
   <association id="35">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="36" name="calculator"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
+      <attribute id="36" name="calculator">        
+        <position height="18" width="57" x="514" y="341"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="16" width="23" x="523" y="366"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

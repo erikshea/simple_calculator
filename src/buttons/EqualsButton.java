@@ -13,8 +13,13 @@ public class EqualsButton extends CalculatorButton {
 	
 	public void onClick() {
 		if (!this.calculator.errorIsDisplayed()) {
-			// Special case: if repeated clicks on "equal"
-			if (this.equals(this.calculator.getLastButtonClicked()) && this.currentOperatorForRepeatedClicks != null) {
+			// If we already entered an operator, and we aren't repeating a click on "Equals" button
+			if (this.calculator.getCurrentOperatorButton() != null && !this.equals(this.calculator.getLastButtonClicked())) {
+				// Current operation is saved in case we click again on equal
+				this.currentOperatorForRepeatedClicks = this.calculator.getCurrentOperatorButton();
+				this.calculator.getCurrentOperatorButton().processOperator();
+			} // Special case: if repeated clicks on "equal"
+			else if (this.currentOperatorForRepeatedClicks != null) {
 				// this is actually the second operand of previous operation (saved as first operand on operation completion)
 				Double temp = this.currentOperatorForRepeatedClicks.getFirstOperand(); 
 				
@@ -23,11 +28,7 @@ public class EqualsButton extends CalculatorButton {
 				this.setNumberOnScreen(temp); // second operand of previous operation becomes second operand of new operation  
 				
 				this.currentOperatorForRepeatedClicks.processOperator();
-			} else if (this.calculator.getCurrentOperatorButton() != null) { // Else, if we already entered an operator
-				// Current operation is saved in case we click again on equal
-				this.currentOperatorForRepeatedClicks = this.calculator.getCurrentOperatorButton();
-				this.calculator.getCurrentOperatorButton().processOperator();
-			}
+			} 
 		}
 		super.onClick();
 	}

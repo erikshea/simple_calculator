@@ -87,7 +87,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 	}
 	
 	/**
-	 *  Create CalculatorButtons and screen
+	 *  Create screen and keyboard
 	 */
 	private void setUpInterfaceElements() {
 		// Set up calculator display
@@ -130,7 +130,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 	}
 	
 	/**
-	 *  Create interface buttons (close, resize) to replace those in default window decoration
+	 *  Create interface buttons (close, resize) to replace those in default window decoration, as well as buttons in keyboard
 	 */
 	private void setUpInterfaceButtons() {
 		closeButton = new ImageButton("", "button_close");
@@ -184,7 +184,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
         				c.gridheight = 2;
         			}
         			
-        			// ButtonFactory will create appropriate button type (digit, one operand...) according to label
+        			// ButtonFactory will create appropriate button type (digit, one operand...)
         			button = ButtonFactory.create(textMatrix[gridRow][gridCol], this);
         			button.setFont( this.getBaseFont() );
         			keyboard.add( button, c);
@@ -201,7 +201,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 	 */
 	private void setUpMouseListeners() {
 		SimpleCalculator me = this;
-    	Dimension firstClickLocation = new Dimension();
+    	Dimension firstClickLocation = new Dimension(); // Needed to calculate new window location on move
 
 		this.addMouseListener(new MouseAdapter() {
 		    public void mousePressed(MouseEvent e) {

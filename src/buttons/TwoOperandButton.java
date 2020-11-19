@@ -14,11 +14,10 @@ public class TwoOperandButton extends CalculatorButton {
 	
 	public void onClick() {
 	if (!this.calculator.errorIsDisplayed()) {
-			if (this.calculator.getCurrentOperatorButton() == null) {
-				this.calculator.setCurrentOperatorButton(this);
-			} else 	// If last button clicked was another TwoOperandButton, don't process
-				 	//  so that new operator clicked becomes current operator 
-			if (!this.getClass().isInstance(this.calculator.getLastButtonClicked())){
+			// If last button clicked was another TwoOperandButton, don't process
+			//  so that new operator clicked becomes current operator 
+			if (	this.calculator.getCurrentOperatorButton() != null
+				&& !this.getClass().isInstance(this.calculator.getLastButtonClicked())){
 				this.calculator.getCurrentOperatorButton().processOperator();
 			}
 

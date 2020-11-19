@@ -10,6 +10,7 @@ public class DigitButton extends CalculatorButton {
 		super(s, c);
 	}
 
+	@Override
 	public void onClick() {
 		String displayString ="0";
 		
