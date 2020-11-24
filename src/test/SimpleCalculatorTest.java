@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import application.SimpleCalculator;
 
-class CalculatorTest extends SimpleCalculator {
+class SimpleCalculatorTest extends SimpleCalculator {
 	private static final long serialVersionUID = 7060761027810301604L;
 
 	@Test

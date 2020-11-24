@@ -71,11 +71,11 @@ public class SimpleCalculator extends JFrame implements Calculator{
 			@Override
 			public void paintComponent(Graphics g) { 
 				super.paintComponent(g);
-				this.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 				g.drawImage(FileUtils.getImage("assets/images/background.png"), 0, 0, this.getWidth(), this.getHeight(), this);  
 			}  
         };  
         
+        contentPane.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
         contentPane.setLayout(new GridBagLayout());
 		this.setContentPane(contentPane);
 		
@@ -177,6 +177,8 @@ public class SimpleCalculator extends JFrame implements Calculator{
         			// Button position in grid is the same as position in matrix
         			c.gridx=gridCol;
         			c.gridy=gridRow; 
+        			
+        			//Button takes up entire space available (minus insets)
         			c.fill = GridBagConstraints.BOTH;
         			
         			if (textMatrix[gridRow][gridCol].equals("+")) {
@@ -368,12 +370,11 @@ public class SimpleCalculator extends JFrame implements Calculator{
 	 * @return d adjusted to aspect ratio
 	 */
 	private Dimension applyRatioToDimension(Dimension d) {
-		if (d.height < d.width * this.heightToWidthRatio) {
-			d.height = (int) (d.width * this.heightToWidthRatio);
-		}
 		
-		if (d.width < (int) (d.height * 1/this.heightToWidthRatio) ) {
-			d.width = (int) (d.height * 1/this.heightToWidthRatio);
+		if (d.height < d.width * this.heightToWidthRatio) { // If requested dimension is too short for aspect ratio
+			d.height = (int) (d.width * this.heightToWidthRatio); // Calculate correct height
+		} else {
+			d.width = (int) (d.height * 1/this.heightToWidthRatio); // Calculate correct width
 		}
 		
 		return d;
