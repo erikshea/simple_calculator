@@ -73,7 +73,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 			@Override
 			public void paintComponent(Graphics g) { 
 				super.paintComponent(g);
-				URL imageUrl = SimpleCalculator.class.getResource("/images/background.png");
+				URL imageUrl = this.getClass().getResource("/images/background.png");
 				g.drawImage(Toolkit.getDefaultToolkit().getImage(imageUrl), 0, 0, this.getWidth(), this.getHeight(), this);  
 			}  
         };  
