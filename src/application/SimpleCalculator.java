@@ -9,9 +9,11 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.net.URL;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -71,7 +73,8 @@ public class SimpleCalculator extends JFrame implements Calculator{
 			@Override
 			public void paintComponent(Graphics g) { 
 				super.paintComponent(g);
-				g.drawImage(FileUtils.getImage("assets/images/background.png"), 0, 0, this.getWidth(), this.getHeight(), this);  
+				URL imageUrl = SimpleCalculator.class.getResource("/images/background.png");
+				g.drawImage(Toolkit.getDefaultToolkit().getImage(imageUrl), 0, 0, this.getWidth(), this.getHeight(), this);  
 			}  
         };  
         

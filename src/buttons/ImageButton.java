@@ -4,12 +4,12 @@ package buttons;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
-import util.FileUtils;
 
 /**
  * Automates the fetching of background image files, and sets them according to button state (mouse over, click..)
@@ -55,7 +55,9 @@ public class ImageButton extends JButton {
     
 	protected ImageIcon getImageIcon(String suffix) {
 		if (!baseIconImages.containsKey(suffix)) { // If image doesn't exist in cache
-			baseIconImages.put(suffix, FileUtils.getImage("assets/images/buttons/" + this.baseFileName + suffix + ".png"));
+
+			URL imageUrl = ImageButton.class.getResource("/images/buttons/" + this.baseFileName + suffix + ".png");
+			baseIconImages.put(suffix, Toolkit.getDefaultToolkit().getImage(imageUrl));
 		}
 		
 		// New image dimensions the same as button
