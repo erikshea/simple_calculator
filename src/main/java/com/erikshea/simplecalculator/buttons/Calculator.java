@@ -1,4 +1,4 @@
-package buttons;
+package com.erikshea.simplecalculator.buttons;
 
 /**
  * CalculatorButton constructor accepts an object that conforms to this interface

@@ -1,4 +1,4 @@
-package application;
+package com.erikshea.simplecalculator.application;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,7 +19,6 @@ public class SimpleCalculatorMain {
 		
 		// Set calculator size as a fraction of screen width.
 		calc.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width/8,0));
-
 		// Calculator X and Y of top left corner so that calculator is centered on the screen
 		int centeredWindowX = (int) (Toolkit.getDefaultToolkit().getScreenSize().width - calc.getPreferredSize().getWidth() )/2;
 		int centeredWindowY = (int) (Toolkit.getDefaultToolkit().getScreenSize().height - calc.getPreferredSize().getHeight() )/2;

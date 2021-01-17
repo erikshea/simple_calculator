@@ -1,4 +1,4 @@
-package buttons;
+package com.erikshea.simplecalculator.buttons;
 
 /**
  * Button for operations that involve two operands, and an operator

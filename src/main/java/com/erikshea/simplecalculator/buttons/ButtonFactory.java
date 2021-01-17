@@ -1,4 +1,4 @@
-package buttons;
+package com.erikshea.simplecalculator.buttons;
 
 /**
  * Create button objects according to button text

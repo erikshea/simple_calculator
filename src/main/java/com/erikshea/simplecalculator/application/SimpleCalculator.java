@@ -1,4 +1,4 @@
-package application;
+package com.erikshea.simplecalculator.application;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -22,12 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import buttons.ButtonFactory;
-import buttons.CalculatorButton;
-import buttons.ImageButton;
-import buttons.TwoOperandButton;
-import buttons.Calculator;
-import util.FileUtils;
+import com.erikshea.simplecalculator.buttons.*;
+import com.erikshea.simplecalculator.util.FileUtils;
 
 /**
  * SimpleCalculator class creates interface elements and deals with presentation logic.
@@ -102,7 +98,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 
 			@Override
 			protected void paintComponent(Graphics g) {
-				if (me.errorIsDisplayed()) { // On error, resize font
+				if (me.getTextOnScreen().length()>me.getMaxDigitsOnScreen()) { // On error, resize font
 					g.setFont(this.getFont().deriveFont(this.getFont().getSize() * 0.37f));
 				}
 				
@@ -411,7 +407,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 	public String getTextOnScreen() {
 		return this.screen.getText();
 	}
-	
+
 	public boolean isErrorString(String s) {
 		return s.startsWith("Cannot");
 	}
@@ -420,6 +416,7 @@ public class SimpleCalculator extends JFrame implements Calculator{
 		return this.isErrorString(this.getTextOnScreen());
 	}
 	
+
 	/** Generic getters and setters **/
 	public int getMaxDigitsOnScreen() {
 		return this.maxDigitsOnScreen;

@@ -1,4 +1,4 @@
-package buttons;
+package com.erikshea.simplecalculator.buttons;
 
 /**
  * "Equals" button processes current operator, and deals with the special case of repeated clicks on it.

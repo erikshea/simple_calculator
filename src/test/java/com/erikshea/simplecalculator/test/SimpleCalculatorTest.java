@@ -1,14 +1,14 @@
-package test;
+package com.erikshea.simplecalculator.test;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import application.SimpleCalculator;
+import com.erikshea.simplecalculator.application.SimpleCalculator;
 
-class SimpleCalculatorTest extends SimpleCalculator {
+public class SimpleCalculatorTest extends SimpleCalculator {
 	private static final long serialVersionUID = 7060761027810301604L;
 
 	@Test
-	void TestCase_1() {
+	public void TestCase_1() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","1","+","2","=","+","3","÷","2","="});
@@ -16,7 +16,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_2() {
+	public void TestCase_2() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"2","±","+","6","±","×","2","±","="});
@@ -24,7 +24,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_3() {
+	public void TestCase_3() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","6","√","%","×","1","0","0","="});
@@ -41,7 +41,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_4() {
+	public void TestCase_4() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","+","2","="});
@@ -61,7 +61,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_5() {
+	public void TestCase_5() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{".","2"});
@@ -69,7 +69,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_5b() {
+	public void TestCase_5b() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1",".",".","2"});
@@ -80,7 +80,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_6() {
+	public void TestCase_6() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"0","1"});
@@ -88,7 +88,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_7() {
+	public void TestCase_7() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"9","÷","3"});
@@ -96,7 +96,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_8() {
+	public void TestCase_8() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","0","÷","3","="});
@@ -104,7 +104,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_9() {
+	public void TestCase_9() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","÷","0","="});
@@ -112,7 +112,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_9b() {
+	public void TestCase_9b() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"1","±","√"});
@@ -120,7 +120,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_10() {
+	public void TestCase_10() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"5","+","1","±","="});
@@ -128,7 +128,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_11() {
+	public void TestCase_11() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"5","+","-","×","2","="});
@@ -136,7 +136,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void TestCase_12() {
+	public void TestCase_12() {
 		SimpleCalculator calc = new SimpleCalculator();
 		
 		calc.activateButtons(new String[]{"5","+","1","-"});
@@ -144,7 +144,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void Storyboard_1() {
+	public void Storyboard_1() {
 		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getTextOnScreen().equals(""));
 		
@@ -159,7 +159,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void Storyboard_2() {
+	public void Storyboard_2() {
 		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getTextOnScreen().equals(""));
 		
@@ -174,7 +174,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 
 	@Test
-	void Storyboard_3() {
+	public void Storyboard_3() {
 		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getTextOnScreen().equals(""));
 		
@@ -198,7 +198,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 
 	@Test
-	void Storyboard_4a() {
+	public void Storyboard_4a() {
 		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getTextOnScreen().equals(""));
 		
@@ -223,7 +223,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	
 	
 	@Test
-	void Storyboard_4b() {
+	public void Storyboard_4b() {
 		SimpleCalculator calc = new SimpleCalculator();
 		assert(calc.getTextOnScreen().equals(""));
 		
@@ -247,7 +247,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void Memory_Example_1() {
+	public void Memory_Example_1() {
 		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"5", "×", "2", "7", "="});
 		assert(calc.getTextOnScreen().equals("135"));
@@ -264,7 +264,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 	}
 	
 	@Test
-	void Memory_Example_2() {
+	public void Memory_Example_2() {
 		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"4", "7", "8", "×", "2", "="});
 		assert(calc.getTextOnScreen().equals("956"));
@@ -278,7 +278,7 @@ class SimpleCalculatorTest extends SimpleCalculator {
 
 	
 	@Test
-	void Memory_Example_3() {
+	public void Memory_Example_3() {
 		SimpleCalculator calc = new SimpleCalculator();
 		calc.activateButtons(new String[]{"ON/C"});
 		assert(calc.getTextOnScreen().equals(""));

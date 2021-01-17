@@ -1,4 +1,4 @@
-package util;
+package com.erikshea.simplecalculator.util;
 
 import java.awt.GraphicsEnvironment;
 import java.util.Arrays;

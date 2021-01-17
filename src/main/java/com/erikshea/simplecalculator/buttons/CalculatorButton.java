@@ -1,4 +1,4 @@
-package buttons;
+package com.erikshea.simplecalculator.buttons;
 
 /**
  * Base calculator button class, inherited by all other buttons
